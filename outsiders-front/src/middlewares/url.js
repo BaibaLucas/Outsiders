@@ -3,7 +3,8 @@
 /**
  * @apiUrl = AMAZON AWS EC2 SERVER
  */
-export const apiUrl = 'http://ec2-174-129-120-118.compute-1.amazonaws.com:3000';
+// export const apiUrl = 'http://ec2-174-129-120-118.compute-1.amazonaws.com:3000';
+export const apiUrl = 'http://localhost:3001';
 
 /**
  * @weatherKey = openWeatherMap APIKEY

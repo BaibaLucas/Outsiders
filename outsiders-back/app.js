@@ -35,6 +35,6 @@ app.use((req, res, next) => {
 
 app.use(router);
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3001, () => {
     console.log('Server running on :', process.env.PORT);
 });

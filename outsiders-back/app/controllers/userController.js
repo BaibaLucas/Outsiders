@@ -26,10 +26,7 @@ module.exports = {
             console.log(test);
 
             if (!test) {
-                res.json({
-                    message: 'le mot de passe doit contenir au moins 8 caractères dont 1 majuscule, 1 minuscule, 1chiffre, 1 caractère spécial',
-                    data: newUser
-                });
+                res.status('401').json({data: newUser});
             };
 
             if (test) {
@@ -42,35 +39,15 @@ module.exports = {
                     password: hashedPassword,
                     username: newUser.username,
                     description: newUser.description
-                });   
-
-                    const jwtContent = {userId: createdUser.id, roleId: createdUser.role_id};
-                    console.log(jwtContent);
-                    const jwtOptions = {
-                        algorithm: 'HS256',
-                        expiresIn: '3h'
-                    };
-                    
+                });                 
                     res.json({
                         status: 200,
                         message: 'new user created',
                         data: createdUser,
                         logged: true,
-                        username: createdUser.username,
-                        token: jwt.sign(jwtContent, process.env.JWTSECRET, jwtOptions)
+                        username: createdUser.username
                     });    
             }    
-            /*     res.json({
-                    message: 'new user created',
-                    data: createdUser
-                });
-
-            } else {
-                res.json({
-                    message: 'le mot de passe doit contenir au moins 8 caractères dont 1 majuscule, 1 minuscule, 1chiffre, 1 caractère spécial',
-                    data: newUser.email
-                });
-            } */
             
         } catch(error) {
             next(error);
